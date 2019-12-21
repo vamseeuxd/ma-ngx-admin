@@ -1,35 +1,16 @@
 language: node_js
-
-sudo: false
-dist: trusty
-
 node_js:
-  - '10'
-
+  - "11.0"
 branches:
   only:
-  - master
-  - starter-kit
-  - demo
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
-
-before_install:
-  - npm i -g npm@latest
-
-install:
-  - travis_retry npm i
-
+    - master
 before_script:
-
+  - npm install -g @angular/cli
 script:
-  - npm run lint:ci
-  - npm run build:prod
-
-git:
-  depth: 1
+  - npm install
+  - npm run build -- --prod --aot
+deploy:
+  skip_cleanup: true
+  provider: firebase
+  token:
+    secure: "1//0gwMGxj-evJaiCgYIARAAGBASNwF-L9IrlFF0CYi4LWN4arveSG1z32p8tgmmwUGQKz9JqcuYwMB3aEDGbAxDXgZN6_8bKX2PyCU"
