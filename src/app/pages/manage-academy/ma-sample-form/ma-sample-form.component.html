@@ -1,0 +1,533 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>Permanent Address:</nb-card-header>
+      <nb-card-body>
+
+        <form (ngSubmit)="submit()" *ngIf="fields" [formGroup]="form">
+          <formly-form [fields]="fields" [form]="form" [model]="model" [options]="options"></formly-form>
+          <button class="btn btn-primary mb-5 mr-3" type="submit">Submit</button>
+          <button class="btn btn-dark mb-5" type="reset">Reset</button>
+        </form>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+<!--<div class="row">
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>
+        Student Details:
+      </nb-card-header>
+      <nb-card-body>
+        <pre>{{studentDetails|json}}</pre>
+        <form #studentDetailsForm="ngForm" [class.was-validated]="studentDetailsForm.invalid && !studentDetailsForm.pristine" class="row needs-validation" novalidate>
+          <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label class="label">Student First Name*</label>
+            <input autocomplete="false" [(ngModel)]="studentDetails.studentFirstName" required type="text" name="studentFirstName"
+                   class="form-control" placeholder="Student First Name">
+            <div class="invalid-tooltip"> Looks good! </div>
+          </div>
+          <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label class="label">Middle Name</label>
+            <input [(ngModel)]="studentDetails.middleName" type="text" name="middleName" class="form-control"
+                   placeholder="Middle Name">
+          </div>
+          <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label class="label">Last Name*</label>
+            <input [(ngModel)]="studentDetails.lastName" required type="text" name="lastName" class="form-control"
+                   placeholder="Last Name">
+          </div>
+          <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label class="label">Gender*</label>
+            <select [(ngModel)]="studentDetails.gender" required name="gender" class="form-control" placeholder="Gender">
+              <option value="-1">&#45;&#45;Select Gender&#45;&#45;</option>
+              <option value="2">Female</option>
+              <option value="1">Male</option>
+            </select>
+          </div>
+          <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label class="label">Date of Birth*</label>
+            <input [(ngModel)]="studentDetails.dateofBirth" required type="text" name="dateofBirth" class="form-control"
+                   [bsConfig]="{ containerClass: 'theme-dark-blue' }" placeholder="Date of Birth" bsDatepicker>
+          </div>
+          <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label class="label">Category*</label>
+            <select [(ngModel)]="studentDetails.category" required name="category" class="form-control" placeholder="category">
+              <option value="-1">&#45;&#45;Select Category&#45;&#45;</option>
+              <option value="2">EWS</option>
+              <option value="1">GENERAL</option>
+              <option value="4">OBC</option>
+              <option value="5">SC/ST</option>
+              <option value="3">STAFF</option>
+            </select>
+          </div>
+          <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label class="label">Student Type*</label>
+            <select [(ngModel)]="studentDetails.studentType" required name="studentType" class="form-control"
+                    placeholder="studentType">
+              <option value="-1">&#45;&#45;Select Student Type&#45;&#45;</option>
+              <option value="1">DAY SCHOLAR</option>
+              <option value="2">HOSTEL</option>
+            </select>
+          </div>
+          <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label class="label">Class*</label>
+            <select [(ngModel)]="studentDetails.class" required name="class" class="form-control" placeholder="class">
+              <option value="-1">&#45;&#45;Select Class&#45;&#45;</option>
+              <option value="15">NURSERY (2020-21)</option>
+              <option value="16">KG (2020-21)</option>
+              <option value="17">P1 (2020-21)</option>
+              <option value="18">P2 (2020-21)</option>
+              <option value="19">P3 (2020-21)</option>
+              <option value="20">P4 (2020-21)</option>
+              <option value="21">P5 (2020-21)</option>
+              <option value="22">S1(2020-21)</option>
+              <option value="23">S2(2020-21)</option>
+              <option value="24">S3(2020-21)</option>
+              <option value="25">S4(2020-21)</option>
+              <option value="26">S5(2020-21)</option>
+              <option value="27">S6(2020-21)</option>
+              <option value="28">S7(2020-21)</option>
+              <option value="29">S1 (HOSTLER) 20-21</option>
+              <option value="30">S2 (HOSTLER) 20-21</option>
+              <option value="31">S3 (HOSTLER) 20-21</option>
+              <option value="32">S4 (HOSTLER) 20-21</option>
+              <option value="33">S5 (HOSTLER) 20-21</option>
+              <option value="34">S6 (HOSTLER) 20-21</option>
+              <option value="35">S7 (HOSTLER) 20-21</option>
+            </select>
+          </div>
+          <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label class="label">Mother Tongue</label>
+            <input [(ngModel)]="studentDetails.motherTongue" type="text" name="motherTongue" class="form-control"
+                   placeholder="Mother Tongue">
+          </div>
+          <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label class="label">Email Id*</label>
+            <input [(ngModel)]="studentDetails.emailId" required type="text" name="emailId" class="form-control"
+                   placeholder="Email Id">
+          </div>
+          <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label class="label">Religion</label>
+            <select [(ngModel)]="studentDetails.religion" name="religion" class="form-control" placeholder="Religion">
+              <option value="-1">&#45;&#45;Select Religion&#45;&#45;</option>
+              <option value="2">Muslim</option>
+              <option value="3">Sikh</option>
+              <option value="4">Christian</option>
+              <option value="5">Buddhist</option>
+              <option value="6">Jainism</option>
+              <option value="7">Others</option>
+              <option value="8">Hindu</option>
+            </select>
+          </div>
+          <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label class="label">Previous School (if any)</label>
+            <input [(ngModel)]="studentDetails.previousSchool" type="text" name="previousSchool" class="form-control"
+                   placeholder="Previous School (if any)">
+          </div>
+          <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label class="label">Mobile No.*</label>
+            <input [(ngModel)]="studentDetails.mobileNo" required type="text" name="mobileNo" class="form-control"
+                   placeholder="Mobile No">
+          </div>
+          <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label class="label">Telephone(Resi)</label>
+            <input [(ngModel)]="studentDetails.telephone" type="text" name="telephone" class="form-control"
+                   placeholder="Telephone(Resi)">
+          </div>
+          <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label class="label">Nationality*</label>
+            <select [(ngModel)]="studentDetails.nationality" required name="nationality" class="form-control" placeholder="Nationality">
+              <option value="-1">&#45;&#45;Select Nationality&#45;&#45;</option>
+              <option value="INDIAN">INDIAN</option>
+              <option value="AFGHAN">AFGHAN</option>
+              <option value="ALBANIAN">ALBANIAN</option>
+              <option value="ALGERIAN">ALGERIAN</option>
+              <option value="AMERICAN">AMERICAN</option>
+              <option value="ANDORRAN">ANDORRAN</option>
+              <option value="ANGOLAN">ANGOLAN</option>
+              <option value="ARGENTINIAN">ARGENTINIAN</option>
+              <option value="ARMENIAN">ARMENIAN</option>
+              <option value="AUSTRALIAN">AUSTRALIAN</option>
+              <option value="AUSTRIAN">AUSTRIAN</option>
+              <option value="AZERBAIJANI">AZERBAIJANI</option>
+              <option value="BAHAMIAN">BAHAMIAN</option>
+              <option value="BAHRAINI">BAHRAINI</option>
+              <option value="BANGLADESHI">BANGLADESHI</option>
+              <option value="BARBADIAN">BARBADIAN</option>
+              <option value="BELARUSIAN">BELARUSIAN</option>
+              <option value="BELGIAN">BELGIAN</option>
+              <option value="BELIZEAN">BELIZEAN</option>
+              <option value="BENINESE">BENINESE</option>
+              <option value="BHUTANESE">BHUTANESE</option>
+              <option value="BOLIVIAN">BOLIVIAN</option>
+              <option value="BOSNIAN">BOSNIAN</option>
+              <option value="BOTSWANAN">BOTSWANAN</option>
+              <option value="BRAZILIAN">BRAZILIAN</option>
+              <option value="BRITISH">BRITISH</option>
+              <option value="BRUNEIAN">BRUNEIAN</option>
+              <option value="BULGARIAN">BULGARIAN</option>
+              <option value="BURKINESE">BURKINESE</option>
+              <option value="BURMESE">BURMESE</option>
+              <option value="BURUNDIAN">BURUNDIAN</option>
+              <option value="CAMBODIAN">CAMBODIAN</option>
+              <option value="CAMEROONIAN">CAMEROONIAN</option>
+              <option value="CANADIAN">CANADIAN</option>
+              <option value="CAPEVERDEAN">CAPEVERDEAN</option>
+              <option value="CHADIAN">CHADIAN</option>
+              <option value="CHILEAN">CHILEAN</option>
+              <option value="CHINESE">CHINESE</option>
+              <option value="COLOMBIAN">COLOMBIAN</option>
+              <option value="CONGOLESE">CONGOLESE</option>
+              <option value="COSTARICAN">COSTARICAN</option>
+              <option value="CROATIAN">CROATIAN</option>
+              <option value="CUBAN">CUBAN</option>
+              <option value="CYPRIOT">CYPRIOT</option>
+              <option value="CZECH">CZECH</option>
+              <option value="DANISH">DANISH</option>
+              <option value="DJIBOUTIAN">DJIBOUTIAN</option>
+              <option value="DOMINICAN">DOMINICAN</option>
+              <option value="DOMINICAN">DOMINICAN</option>
+              <option value="DUTCH">DUTCH</option>
+              <option value="ECUADOREAN">ECUADOREAN</option>
+              <option value="EGYPTIAN">EGYPTIAN</option>
+              <option value="EMIRATES">EMIRATES</option>
+              <option value="ENGLISH">ENGLISH</option>
+              <option value="ERITREAN">ERITREAN</option>
+              <option value="ESTONIAN">ESTONIAN</option>
+              <option value="ETHIOPIAN">ETHIOPIAN</option>
+              <option value="FIJIAN">FIJIAN</option>
+              <option value="FINNISH">FINNISH</option>
+              <option value="FRENCH">FRENCH</option>
+              <option value="GABONESE">GABONESE</option>
+              <option value="GAMBIAN">GAMBIAN</option>
+              <option value="GEORGIAN">GEORGIAN</option>
+              <option value="GERMAN">GERMAN</option>
+              <option value="GHANAIAN">GHANAIAN</option>
+              <option value="GREEK">GREEK</option>
+              <option value="GRENADIAN">GRENADIAN</option>
+              <option value="GUATEMALAN">GUATEMALAN</option>
+              <option value="GUINEAN">GUINEAN</option>
+              <option value="GUINEAN">GUINEAN</option>
+              <option value="GUYANESE">GUYANESE</option>
+              <option value="HAITIAN">HAITIAN</option>
+              <option value="HONDURAN">HONDURAN</option>
+              <option value="HUNGARIAN">HUNGARIAN</option>
+              <option value="ICELANDIC">ICELANDIC</option>
+              <option value="INDONESIAN">INDONESIAN</option>
+              <option value="IRANIAN">IRANIAN</option>
+              <option value="IRAQI">IRAQI</option>
+              <option value="IRISH">IRISH</option>
+              <option value="ITALIAN">ITALIAN</option>
+              <option value="JAMAICAN">JAMAICAN</option>
+              <option value="JAPANESE">JAPANESE</option>
+              <option value="JORDANIAN">JORDANIAN</option>
+              <option value="KAZAKH">KAZAKH</option>
+              <option value="KENYAN">KENYAN</option>
+              <option value="KUWAITI">KUWAITI</option>
+              <option value="LAOTIAN">LAOTIAN</option>
+              <option value="LATVIAN">LATVIAN</option>
+              <option value="LEBANESE">LEBANESE</option>
+              <option value="LIBERIAN">LIBERIAN</option>
+              <option value="LIBYAN">LIBYAN</option>
+              <option value="LITHUANIAN">LITHUANIAN</option>
+              <option value="MACEDONIAN">MACEDONIAN</option>
+              <option value="MADAGASCAN">MADAGASCAN</option>
+              <option value="MALAWIAN">MALAWIAN</option>
+              <option value="MALAYSIAN">MALAYSIAN</option>
+              <option value="MALDIVIAN">MALDIVIAN</option>
+              <option value="MALIAN">MALIAN</option>
+              <option value="MALTESE">MALTESE</option>
+              <option value="MAURITANIAN">MAURITANIAN</option>
+              <option value="MAURITIAN">MAURITIAN</option>
+              <option value="MEXICAN">MEXICAN</option>
+              <option value="MOLDOVAN">MOLDOVAN</option>
+              <option value="MONACAN">MONACAN</option>
+              <option value="MONGOLIAN">MONGOLIAN</option>
+              <option value="MONTENEGRIN">MONTENEGRIN</option>
+              <option value="MOROCCAN">MOROCCAN</option>
+              <option value="MOZAMBICAN">MOZAMBICAN</option>
+              <option value="NAMIBIAN">NAMIBIAN</option>
+              <option value="NEPALESE">NEPALESE</option>
+              <option value="NEWZEALAND">NEWZEALAND</option>
+              <option value="NICARAGUAN">NICARAGUAN</option>
+              <option value="NIGERIAN">NIGERIAN</option>
+              <option value="NIGERIEN">NIGERIEN</option>
+              <option value="NORTHKOREAN">NORTHKOREAN</option>
+              <option value="NORWEGIAN">NORWEGIAN</option>
+              <option value="OMANI">OMANI</option>
+              <option value="PAKISTANI">PAKISTANI</option>
+              <option value="PANAMANIAN">PANAMANIAN</option>
+              <option value="PARAGUAYAN">PARAGUAYAN</option>
+              <option value="PERUVIAN">PERUVIAN</option>
+              <option value="PHILIPPINE">PHILIPPINE</option>
+              <option value="POLISH">POLISH</option>
+              <option value="PORTUGUESE">PORTUGUESE</option>
+              <option value="QATARI">QATARI</option>
+              <option value="ROMANIAN">ROMANIAN</option>
+              <option value="RUSSIAN">RUSSIAN</option>
+              <option value="RWANDAN">RWANDAN</option>
+              <option value="SALVADOREAN">SALVADOREAN</option>
+              <option value="SAUDIARABIAN">SAUDIARABIAN</option>
+              <option value="SCOTTISH">SCOTTISH</option>
+              <option value="SENEGALESE">SENEGALESE</option>
+              <option value="SERBIAN">SERBIAN</option>
+              <option value="SEYCHELLOIS">SEYCHELLOIS</option>
+              <option value="SIERRALEONIAN">SIERRALEONIAN</option>
+              <option value="SINGAPOREAN">SINGAPOREAN</option>
+              <option value="SLOVAK">SLOVAK</option>
+              <option value="SLOVENIAN">SLOVENIAN</option>
+              <option value="SOMALI">SOMALI</option>
+              <option value="SOUTHAFRICAN">SOUTHAFRICAN</option>
+              <option value="SOUTHKOREAN">SOUTHKOREAN</option>
+              <option value="SPANISH">SPANISH</option>
+              <option value="SRILANKAN">SRILANKAN</option>
+              <option value="SUDANESE">SUDANESE</option>
+              <option value="SURINAMESE">SURINAMESE</option>
+              <option value="SWAZI">SWAZI</option>
+              <option value="SWEDISH">SWEDISH</option>
+              <option value="SWISS">SWISS</option>
+              <option value="SYRIAN">SYRIAN</option>
+              <option value="TAIWANESE">TAIWANESE</option>
+              <option value="TAJIK">TAJIK</option>
+              <option value="TANZANIAN">TANZANIAN</option>
+              <option value="THAI">THAI</option>
+              <option value="TOBAGONIAN">TOBAGONIAN</option>
+              <option value="TOGOLESE">TOGOLESE</option>
+              <option value="TRINIDADIAN">TRINIDADIAN</option>
+              <option value="TUNISIAN">TUNISIAN</option>
+              <option value="TURKISH">TURKISH</option>
+              <option value="TURKOMAN">TURKOMAN</option>
+              <option value="TUVALUAN">TUVALUAN</option>
+              <option value="U.S.A.">U.S.A.</option>
+              <option value="UGANDAN">UGANDAN</option>
+              <option value="UK">UK</option>
+              <option value="UKRAINIAN">UKRAINIAN</option>
+              <option value="URUGUAYAN">URUGUAYAN</option>
+              <option value="US">US</option>
+              <option value="UZBEK">UZBEK</option>
+              <option value="VANUATUAN">VANUATUAN</option>
+              <option value="VENEZUELAN">VENEZUELAN</option>
+              <option value="VIETNAMESE">VIETNAMESE</option>
+              <option value="WELSH">WELSH</option>
+              <option value="WESTERNSAMOAN">WESTERNSAMOAN</option>
+              <option value="YEMENI">YEMENI</option>
+              <option value="YUGOSLAV">YUGOSLAV</option>
+              <option value="ZAIREAN">ZAIREAN</option>
+              <option value="ZAMBIAN">ZAMBIAN</option>
+              <option value="ZIMBABWEAN">ZIMBABWEAN</option>
+            </select>
+          </div>
+          <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <label class="label">Student Photo</label>
+            <input [(ngModel)]="studentDetails.studentPhoto" type="text" name="studentPhoto" class="form-control"
+                   placeholder="Student Photo">
+          </div>
+        </form>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>Permanent Address:</nb-card-header>
+      <nb-card-body></nb-card-body>
+    </nb-card>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>Communication Address:</nb-card-header>
+      <nb-card-body></nb-card-body>
+    </nb-card>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>Father's Details:</nb-card-header>
+      <nb-card-body></nb-card-body>
+    </nb-card>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>Mother's Details:</nb-card-header>
+      <nb-card-body></nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>Inline form</nb-card-header>
+      <nb-card-body>
+        <form class="form-inline">
+          <input type="text" nbInput fullWidth placeholder="Jane Doe">
+          <input type="text" nbInput fullWidth placeholder="Email">
+          <nb-checkbox>Remember me</nb-checkbox>
+          <button type="submit" nbButton status="primary">Submit</button>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>Using the Grid</nb-card-header>
+      <nb-card-body>
+        <form>
+          <div class="form-group row">
+            <label for="inputEmail1" class="label col-sm-3 col-form-label">Email</label>
+            <div class="col-sm-9">
+              <input type="email" nbInput fullWidth id="inputEmail1" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword2" class="label col-sm-3 col-form-label">Password</label>
+            <div class="col-sm-9">
+              <input type="password" nbInput fullWidth id="inputPassword2" placeholder="Password">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 label">Radios</label>
+            <div class="col-sm-9">
+              <nb-radio-group>
+                <nb-radio>Option 1</nb-radio>
+                <nb-radio>Option 2</nb-radio>
+                <nb-radio disabled>Disabled Option</nb-radio>
+              </nb-radio-group>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="offset-sm-3 col-sm-9">
+              <button type="submit" nbButton status="primary">Sign in</button>
+            </div>
+          </div>
+        </form>
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card>
+      <nb-card-header>Form without labels</nb-card-header>
+      <nb-card-body>
+        <form>
+          <div class="form-group">
+            <input type="text" nbInput fullWidth placeholder="Recipients">
+          </div>
+          <div class="form-group">
+            <input type="text" nbInput fullWidth placeholder="Subject">
+          </div>
+          <div class="form-group">
+            <textarea nbInput placeholder="Message"></textarea>
+          </div>
+          <button type="submit" nbButton status="success">Send</button>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>Basic form</nb-card-header>
+      <nb-card-body>
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="label">Email address</label>
+            <input type="email" nbInput fullWidth id="exampleInputEmail1" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" class="label">Password</label>
+            <input type="password" nbInput fullWidth id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <nb-checkbox>Check me out</nb-checkbox>
+          </div>
+          <button type="submit" nbButton status="danger">Submit</button>
+        </form>
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card>
+      <nb-card-header>Block form</nb-card-header>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="inputFirstName" class="label">First Name</label>
+              <input type="text" nbInput fullWidth id="inputFirstName" placeholder="First Name">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="inputLastName" class="label">Last Name</label>
+              <input type="text" nbInput fullWidth id="inputLastName" placeholder="Last Name">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="inputEmail" class="label">Email</label>
+              <input type="email" nbInput fullWidth id="inputEmail" placeholder="Email">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="inputWebsite" class="label">Website</label>
+              <input type="text" nbInput fullWidth id="inputWebsite" placeholder="Website">
+            </div>
+          </div>
+        </div>
+        <button type="submit" nbButton>Submit</button>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>Horizontal form</nb-card-header>
+      <nb-card-body>
+        <form class="form-horizontal">
+          <div class="form-group row">
+            <label for="inputEmail3" class="label col-sm-3 form-control-label">Email</label>
+            <div class="col-sm-9">
+              <input type="email" nbInput fullWidth id="inputEmail3" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="label col-sm-3 form-control-label">Password</label>
+            <div class="col-sm-9">
+              <input type="password" nbInput fullWidth id="inputPassword3" placeholder="Password">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="offset-sm-3 col-sm-9">
+              <div class="checkbox">
+                <nb-checkbox>Remember me</nb-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="offset-sm-3 col-sm-9">
+              <button type="submit" nbButton status="warning">Sign in</button>
+            </div>
+          </div>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>-->
+
